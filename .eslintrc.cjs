@@ -2,8 +2,8 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-14 10:40:13
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-14 14:11:20
- * @FilePath: /vite-project/.eslintrc.cjs
+ * @LastEditTime: 2023-08-14 17:03:57
+ * @FilePath: /vite-boot/.eslintrc.cjs
  * @Description: eslint配置
  */
 // @see https://eslint.bootcss.com/docs/rules
@@ -45,7 +45,8 @@ module.exports = {
 
 		// typeScript (https://typescript-eslint.io/rules)
 		'@typescript-eslint/no-unused-vars': 'error', // 禁止定义未使用的变量
-		'@typescript-eslint/prefer-ts-expect-error': 'error', // 禁止使用 @ts-ignore
+		// '@typescript-eslint/prefer-ts-expect-error': 'error', // 禁止使用 @ts-ignore
+		'@typescript-eslint/ban-ts-comment': 'off',
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/no-empty-function': 'off', // 关闭空方法检查
 		'@typescript-eslint/no-explicit-any': 'off', // 关闭any类型的警告
