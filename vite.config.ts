@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-14 17:54:33
+ * @LastEditTime: 2023-08-15 11:33:48
  * @FilePath: /vite-boot/vite.config.ts
  * @Description: vite配置
  */
@@ -26,6 +26,15 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': path.resolve('./src'), // 相对路径别名配置，使用@ 代替 src
+		},
+	},
+	// sass全局变量配置
+	css: {
+		preprocessorOptions: {
+			scss: {
+				javascriptEnabled: true,
+				additionalData: '@import "./src/styles/variable.scss";',
+			},
 		},
 	},
 });
