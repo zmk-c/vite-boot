@@ -9,7 +9,6 @@
 		"build:prod": "vue-tsc && vite build --mode production",
 		"lint": "eslint src/**/*.{ts,vue} --fix",
 		"format": "prettier --write .",
-		"prepare": "husky install",
 		"commitlint": "commitlint --config commitlint.config.js -e -V"
 	},
 	"dependencies": {
