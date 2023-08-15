@@ -3,11 +3,12 @@
 		"target": "esnext", // 指定编译js的版本
 		"useDefineForClassFields": true, // 使用类字段定义
 		"module": "esnext", // 生成代码的模板标准 默认为commonJs
-		"moduleResolution": "node", 
-		"lib": [ // TS需要引用的库，即声明文件
-      "esnext",
-      "dom"
-    ],
+		"moduleResolution": "node",
+		"lib": [
+			// TS需要引用的库，即声明文件
+			"esnext",
+			"dom"
+		],
 		"skipLibCheck": true, // 不对第三方依赖类型检查 ，element-plus 生产打包报错
 		"resolveJsonModule": true, // 允许引入 JSON 文件
 		"jsx": "preserve", // 保留原始的 JSX 代码，不进行编译
