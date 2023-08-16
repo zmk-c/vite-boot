@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 00:12:03
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 00:28:40
+ * @LastEditTime: 2023-08-16 10:18:08
  * @FilePath: /vite-boot/src/api/user/type.ts
  * @Description: 登陆接口需要携带参数ts类型
  */
