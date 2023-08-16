@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 09:59:24
+ * @LastEditTime: 2023-08-16 11:19:10
  * @FilePath: /vite-boot/README.md
  * @Description: README
 -->
@@ -33,4 +33,4 @@
 
 4. 对axios进行了二次封装，api接口统一管理
 
-5. 使用vue-router 4.x作为路由配置以及pinia作为状态管理
+5. 使用vue-router 4.x作为路由配置以及pinia作为仓库

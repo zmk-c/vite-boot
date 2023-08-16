@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 00:12:03
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 10:18:08
+ * @LastEditTime: 2023-08-16 18:36:01
  * @FilePath: /vite-boot/src/api/user/type.ts
  * @Description: 登陆接口需要携带参数ts类型
  */
@@ -13,14 +13,13 @@ export interface LoginFormData {
 	password: string;
 }
 
-// 登录响应类型声明
+// 登录接口返回数据类型
 export interface LoginResponseData {
-	access_token: string;
-	token_type: string;
+	code: number;
+	data: dataType;
 }
 
-// 验证码类型声明
-export interface Captcha {
-	img: string;
-	uuid: string;
+interface dataType {
+	token?: string;
+	message?: string;
 }

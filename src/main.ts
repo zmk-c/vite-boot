@@ -22,6 +22,8 @@ import globalComponent from '@/components/index';
 import '@/styles/index.scss';
 // 挂载路由
 import router from './router';
+// 注册使用pinia
+import pinia from './store';
 
 // 获取应用实例对象
 const app = createApp(App);
@@ -33,4 +35,5 @@ app
 	})
 	.use(globalComponent) // 安装自定义插件
 	.use(router) // 注册模板路由
+	.use(pinia) // 使用pinia仓库
 	.mount('#app');

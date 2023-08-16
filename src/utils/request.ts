@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-15 18:20:28
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 00:01:27
+ * @LastEditTime: 2023-08-16 18:33:38
  * @FilePath: /vite-boot/src/utils/request.ts
  * @Description: axios二次封装
  */
@@ -38,28 +38,28 @@ request.interceptors.response.use(
 	(error) => {
 		// 失败回调： 处理http网络错误
 		// 定义一个变量存储网络错误信息
-		let msg = '';
+		let message = '';
 		const code = error.response.data;
 		switch (code) {
 			case 401:
-				msg = 'Token过期';
+				message = 'Token过期';
 				break;
 			case 403:
-				msg = '无权访问';
+				message = '无权访问';
 				break;
 			case 404:
-				msg = '请求地址错误';
+				message = '请求地址错误';
 				break;
 			case 500:
-				msg = '服务器出现问题';
+				message = '服务器出现问题';
 				break;
 
 			default:
-				msg = '网络出现问题';
+				message = '网络出现问题';
 				break;
 		}
 		// 提示错误信息
-		ElMessage.error(msg);
+		ElMessage.error(message);
 
 		return Promise.reject(error);
 	}
