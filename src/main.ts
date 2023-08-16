@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-15 11:17:15
+ * @LastEditTime: 2023-08-16 09:28:59
  * @FilePath: /vite-boot/src/main.ts
  * @Description: main.ts函数主入口
  */
@@ -20,6 +20,8 @@ import 'virtual:svg-icons-register';
 import globalComponent from '@/components/index';
 // 引入模板的全局样式
 import '@/styles/index.scss';
+// 挂载路由
+import router from './router';
 
 // 获取应用实例对象
 const app = createApp(App);
@@ -30,4 +32,5 @@ app
 		locale: zhCn,
 	})
 	.use(globalComponent) // 安装自定义插件
+	.use(router) // 注册模板路由
 	.mount('#app');
