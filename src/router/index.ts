@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 08:55:49
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 09:26:13
+ * @LastEditTime: 2023-08-17 09:11:53
  * @FilePath: /vite-boot/src/router/index.ts
  * @Description: 通过vue-router插件实现模版路由配置
  */
@@ -24,7 +24,7 @@ const router = createRouter({
 		{
 			// 登陆成功狗展示的数据路由
 			path: '/',
-			component: () => import('@/views/home/index.vue'),
+			component: () => import('@/layout/index.vue'),
 			name: 'layout',
 		},
 		{

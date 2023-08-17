@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 09:20:09
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 19:52:25
+ * @LastEditTime: 2023-08-17 09:02:05
  * @FilePath: /vite-boot/src/views/login/index.vue
  * @Description: 登陆页面
 -->
@@ -36,6 +36,7 @@ import { User, Lock } from '@element-plus/icons-vue';
 import { ref, reactive, toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 import { LoginFormData } from '@/api/user/type';
+import { getTime } from '@/utils/time';
 // 引入用户相关的仓库
 import useUserStore from '@/store/modules/user';
 const useStore = useUserStore(); // 获取用户仓库
@@ -70,6 +71,7 @@ const login = async () => {
 		ElNotification({
 			type: 'success',
 			message: '登陆成功',
+			title: `Hi, ${getTime()}好`,
 		});
 		state.loading = false;
 	} catch (error: any) {
