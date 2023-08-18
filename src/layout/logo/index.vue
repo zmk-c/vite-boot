@@ -2,13 +2,13 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 17:57:42
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-17 18:09:01
+ * @LastEditTime: 2023-08-18 15:15:40
  * @FilePath: /vite-boot/src/layout/logo/index.vue
  * @Description: 
 -->
 <template>
 	<div class="logo">
-		<img src="../../../public/logo.png" />
+		<img src="@/assets/images/logo.png" />
 		<p>甄选运营平台</p>
 	</div>
 </template>

@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 18:54:21
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 09:27:27
+ * @LastEditTime: 2023-08-18 15:40:47
  * @FilePath: /vite-boot/src/router/router.ts
  * @Description: 常量路由
  */
@@ -10,7 +10,7 @@ export const constantRoute = [
 	{
 		path: '/login',
 		component: () => import('@/views/login/index.vue'),
-		name: 'login',
+		name: 'Login',
 		meta: {
 			title: '登录', // 菜单标题
 			hidden: true, // 是否隐藏
@@ -19,7 +19,7 @@ export const constantRoute = [
 	{
 		path: '/',
 		component: () => import('@/layout/index.vue'),
-		name: 'layout',
+		name: 'Layout',
 		meta: {
 			title: 'layout',
 			hidden: false,
@@ -36,26 +36,113 @@ export const constantRoute = [
 					icon: 'HomeFilled',
 				},
 			},
-			{
-				path: '/ceshi',
-				component: () => import('@/views/home/index.vue'),
-				meta: {
-					title: '测试',
-					hidden: false,
-					icon: 'HomeFilled',
-				},
-			},
 		],
 	},
 	{
 		path: '/screen',
 		component: () => import('@/views/screen/index.vue'),
-		name: 'screen',
+		name: 'Screen',
 		meta: {
 			title: '大屏',
 			hidden: false,
 			icon: 'Platform',
 		},
+	},
+	{
+		path: '/acl',
+		component: () => import('@/layout/index.vue'),
+		name: 'Acl',
+		meta: {
+			title: '权限管理',
+			hidden: false,
+			icon: 'Lock',
+		},
+		redirect: '/acl/user',
+		children: [
+			{
+				path: '/acl/user',
+				component: () => import('@/views/acl/user/index.vue'),
+				name: 'User',
+				meta: {
+					title: '用户管理',
+					hidden: false,
+					icon: 'User',
+				},
+			},
+			{
+				path: '/acl/role',
+				component: () => import('@/views/acl/role/index.vue'),
+				name: 'Role',
+				meta: {
+					title: '角色管理',
+					hidden: false,
+					icon: 'Avatar',
+				},
+			},
+			{
+				path: '/acl/permission',
+				component: () => import('@/views/acl/permission/index.vue'),
+				name: 'Permission',
+				meta: {
+					title: '菜单管理',
+					hidden: false,
+					icon: 'List',
+				},
+			},
+		],
+	},
+	{
+		path: '/product',
+		component: () => import('@/layout/index.vue'),
+		name: 'Product',
+		meta: {
+			title: '商品管理',
+			hidden: false,
+			icon: 'Goods',
+		},
+		redirect: '/product/trademark',
+		children: [
+			{
+				path: '/product/trademark',
+				component: () => import('@/views/product/trademark/index.vue'),
+				name: 'Trademark',
+				meta: {
+					title: '品牌管理',
+					icon: 'ShoppingCart',
+					hidden: false,
+				},
+			},
+			{
+				path: '/product/attr',
+				component: () => import('@/views/product/attr/index.vue'),
+				name: 'Attr',
+				meta: {
+					title: '属性管理',
+					icon: 'Management',
+					hidden: false,
+				},
+			},
+			{
+				path: '/product/spu',
+				component: () => import('@/views/product/spu/index.vue'),
+				name: 'Spu',
+				meta: {
+					title: 'Spu',
+					icon: 'SetUp',
+					hidden: false,
+				},
+			},
+			{
+				path: '/product/sku',
+				component: () => import('@/views/product/sku/index.vue'),
+				name: 'Sku',
+				meta: {
+					title: 'Sku',
+					icon: 'ScaleToOriginal',
+					hidden: false,
+				},
+			},
+		],
 	},
 	{
 		path: '/404',
