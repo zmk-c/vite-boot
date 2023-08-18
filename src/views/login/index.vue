@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 09:20:09
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-17 09:02:05
+ * @LastEditTime: 2023-08-18 10:47:42
  * @FilePath: /vite-boot/src/views/login/index.vue
  * @Description: 登陆页面
 -->
@@ -22,7 +22,7 @@
 						<el-input v-model="userForm.password" type="password" :prefix-icon="Lock" clearable show-password></el-input>
 					</el-form-item>
 					<el-form-item>
-						<el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">登陆</el-button>
+						<el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">登&nbsp;录</el-button>
 					</el-form-item>
 				</el-form>
 			</el-col>
@@ -70,7 +70,7 @@ const login = async () => {
 		// 登陆成功提示信息
 		ElNotification({
 			type: 'success',
-			message: '登陆成功',
+			message: '登录成功',
 			title: `Hi, ${getTime()}好`,
 		});
 		state.loading = false;

@@ -2,14 +2,23 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 09:11:06
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-17 17:15:36
+ * @LastEditTime: 2023-08-18 09:49:51
  * @FilePath: /vite-boot/src/layout/index.vue
  * @Description: layout首页
 -->
 <template>
 	<div class="layout_container">
 		<!-- 左侧菜单 -->
-		<div class="layout_slider">111</div>
+		<div class="layout_slider">
+			<!-- 展示logo -->
+			<Logo></Logo>
+
+			<!-- 展示菜单 -->
+			<!-- 滚动组件 -->
+			<el-scrollbar class="scollbar">
+				<Menu :menuList="userStore.menuRoutes"></Menu>
+			</el-scrollbar>
+		</div>
 		<!-- 顶部导航 -->
 		<div class="layout_tabbar">222</div>
 		<!-- 内容展示区 -->
@@ -19,7 +28,14 @@
 	</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Logo from './logo/index.vue';
+import Menu from './menu/index.vue';
+// 获取用户相关的小仓库
+import useUserStore from '@/store/modules/user';
+
+const userStore = useUserStore();
+</script>
 
 <style scoped lang="scss">
 .layout_container {
@@ -31,6 +47,15 @@
 		width: $base-menu-width;
 		height: 100vh;
 		background: $base-menu-background;
+		color: white;
+
+		.scollbar {
+			width: 100%;
+			height: calc(100vh - $base-menu-logo-height);
+			.el-menu {
+				border-right: none;
+			}
+		}
 	}
 
 	.layout_tabbar {

@@ -2,14 +2,18 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 11:29:10
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 19:24:09
+ * @LastEditTime: 2023-08-17 19:07:38
  * @FilePath: /vite-boot/src/store/modules/user.ts
  * @Description: 用户存储相关仓库
  */
 import { defineStore } from 'pinia';
 import { userInfo } from '@/api/user';
-import { LoginFormData, LoginResponseData } from '@/api/user/type'; // 登陆接口请求和返回数据
-import { UserState } from './types/type'; // 用户仓库数据类型
+// 登陆接口请求和返回数据
+import { LoginFormData, LoginResponseData } from '@/api/user/type';
+// 用户仓库数据类型
+import { UserState } from './types/type';
+// 引入路由(常量)
+import { constantRoute } from '@/router/router';
 
 // 创建用户相关仓库
 const useUserStore = defineStore('User', {
@@ -17,6 +21,7 @@ const useUserStore = defineStore('User', {
 	state: (): UserState => {
 		return {
 			token: localStorage.getItem('token'), // 用户唯一标识token
+			menuRoutes: constantRoute, // 仓库存储生成菜单需要的路由数组
 		};
 	},
 
