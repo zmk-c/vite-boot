@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 18:44:20
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 16:38:10
+ * @LastEditTime: 2023-08-18 16:45:11
  * @FilePath: /vite-boot/src/layout/menu/index.vue
  * @Description: 菜单路由封装
 -->
@@ -12,10 +12,10 @@
 		<!-- 没有子路由-->
 		<template v-if="!item.children">
 			<el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="getRoute">
+				<el-icon>
+					<component :is="item.meta.icon"></component>
+				</el-icon>
 				<template #title>
-					<el-icon>
-						<component :is="item.meta.icon"></component>
-					</el-icon>
 					<span>{{ item.meta.title }} </span>
 				</template>
 			</el-menu-item>
@@ -24,10 +24,10 @@
 		<!-- 有子路由但只有一个 -->
 		<template v-if="item.children && item.children.length === 1">
 			<el-menu-item :index="item.children[0].path" v-if="!item.children[0].meta.hidden" @click="getRoute">
+				<el-icon>
+					<component :is="item.children[0].meta.icon"></component>
+				</el-icon>
 				<template #title>
-					<el-icon>
-						<component :is="item.children[0].meta.icon"></component>
-					</el-icon>
 					<span>{{ item.children[0].meta.title }}</span>
 				</template>
 			</el-menu-item>

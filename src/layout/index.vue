@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 09:11:06
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 16:37:19
+ * @LastEditTime: 2023-08-18 16:53:35
  * @FilePath: /vite-boot/src/layout/index.vue
  * @Description: layout首页
 -->
@@ -15,7 +15,9 @@
 
 			<!-- 展示菜单 -->
 			<el-scrollbar class="scollbar">
-				<el-menu background-color="#001529" text-color="white">
+				<!-- 菜单组件 -->
+				<el-menu :default-active="$route.path" background-color="#001529" text-color="white">
+					<!-- 根据路由动态生成菜单 -->
 					<Menus :menuList="userStore.menuRoutes"></Menus>
 				</el-menu>
 			</el-scrollbar>
@@ -38,12 +40,18 @@
 </template>
 
 <script setup lang="ts">
+// 获取路由对象
+import { useRoute } from 'vue-router';
+// 引入左侧菜单logo字组件
 import Logo from './logo/index.vue';
+// 引入菜单组件
 import Menus from './menu/index.vue';
 // 获取用户相关的小仓库
 import useUserStore from '@/store/modules/user';
 
 const userStore = useUserStore();
+const $route = useRoute();
+console.log($route.path);
 </script>
 
 <style scoped lang="scss">
