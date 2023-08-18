@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 09:11:06
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 16:17:57
+ * @LastEditTime: 2023-08-18 16:37:19
  * @FilePath: /vite-boot/src/layout/index.vue
  * @Description: layout首页
 -->
@@ -14,9 +14,10 @@
 			<Logo></Logo>
 
 			<!-- 展示菜单 -->
-			<!-- 滚动组件 -->
 			<el-scrollbar class="scollbar">
-				<Menus :menuList="userStore.menuRoutes"></Menus>
+				<el-menu background-color="#001529" text-color="white">
+					<Menus :menuList="userStore.menuRoutes"></Menus>
+				</el-menu>
 			</el-scrollbar>
 		</div>
 		<!-- 顶部导航 -->
@@ -49,13 +50,11 @@ const userStore = useUserStore();
 .layout_container {
 	width: 100%;
 	height: 100vh;
-	background: red;
 
 	.layout_slider {
 		width: $base-menu-width;
 		height: 100vh;
 		background: $base-menu-background;
-		color: white;
 
 		.scollbar {
 			width: 100%;

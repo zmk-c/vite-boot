@@ -2,13 +2,13 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 18:44:20
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 16:01:16
+ * @LastEditTime: 2023-08-18 16:38:10
  * @FilePath: /vite-boot/src/layout/menu/index.vue
  * @Description: 菜单路由封装
 -->
 <template>
 	<!-- 动态展示 -->
-	<el-menu v-for="item in menuList" :key="item.path">
+	<template v-for="item in menuList" :key="item.path">
 		<!-- 没有子路由-->
 		<template v-if="!item.children">
 			<el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="getRoute">
@@ -45,7 +45,7 @@
 				<Menus :menuList="item.children"></Menus>
 			</el-sub-menu>
 		</template>
-	</el-menu>
+	</template>
 </template>
 
 <script setup lang="ts">
