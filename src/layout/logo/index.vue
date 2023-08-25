@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 17:57:42
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 15:15:40
+ * @LastEditTime: 2023-08-25 11:40:21
  * @FilePath: /vite-boot/src/layout/logo/index.vue
  * @Description: 
 -->
@@ -13,6 +13,12 @@
 	</div>
 </template>
 
+<script lang="ts">
+export default {
+	name: 'Logo',
+};
+</script>
+
 <script setup lang="ts"></script>
 
 <style scoped lang="scss">
@@ -22,10 +28,11 @@
 	color: white;
 	display: flex;
 	align-items: center;
+	padding-left: 10px;
 
 	img {
-		width: 40px;
-		height: 40px;
+		width: 30px;
+		height: 30px;
 	}
 
 	p {

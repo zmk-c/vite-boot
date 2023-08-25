@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 18:44:20
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 16:45:11
+ * @LastEditTime: 2023-08-25 10:40:12
  * @FilePath: /vite-boot/src/layout/menu/index.vue
  * @Description: 菜单路由封装
 -->
@@ -32,6 +32,7 @@
 				</template>
 			</el-menu-item>
 		</template>
+
 		<!-- 有子路由并且有多个 -->
 		<template v-if="item.children && item.children.length > 1">
 			<el-sub-menu :index="item.path">
@@ -48,6 +49,12 @@
 	</template>
 </template>
 
+<script lang="ts">
+export default {
+	name: 'Menus',
+};
+</script>
+
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 // 获取父组件传递过来的全部路由数组
@@ -58,12 +65,6 @@ const $router = useRouter();
 // 点击跳转路由 	菜单点击时的回调函数
 const getRoute = (vc: any) => {
 	$router.push(vc.index);
-};
-</script>
-
-<script lang="ts">
-export default {
-	name: 'Menus',
 };
 </script>
 
