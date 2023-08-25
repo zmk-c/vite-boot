@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 09:20:09
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 10:47:42
+ * @LastEditTime: 2023-08-25 17:37:06
  * @FilePath: /vite-boot/src/views/login/index.vue
  * @Description: 登陆页面
 -->
@@ -34,13 +34,14 @@
 import { ElNotification } from 'element-plus';
 import { User, Lock } from '@element-plus/icons-vue';
 import { ref, reactive, toRefs } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { LoginFormData } from '@/api/user/type';
 import { getTime } from '@/utils/time';
 // 引入用户相关的仓库
 import useUserStore from '@/store/modules/user';
 const useStore = useUserStore(); // 获取用户仓库
-const $router = useRouter(); // 获取路由器
+const $router = useRouter(); // 获取路由器对象
+const $route = useRoute(); // 获取路由对象
 const state = reactive({
 	loading: false, // 按钮加载效果
 	userForm: {
@@ -66,7 +67,11 @@ const login = async () => {
 	try {
 		await useStore.userLogin(state.userForm);
 		// 编程式导航跳转到展示数据首页
-		$router.push('/');
+		// $router.push('/');
+
+		// 判断登录的时候 路由路径中是否有query参数 如果有就往query参数跳转，没有跳转到首页 tabbar/index.vue
+		let redirect: any = $route.query.redirect;
+		$router.push({ path: redirect || '/login' });
 		// 登陆成功提示信息
 		ElNotification({
 			type: 'success',

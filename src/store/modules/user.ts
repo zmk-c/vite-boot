@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 11:29:10
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 10:47:22
+ * @LastEditTime: 2023-08-25 17:20:18
  * @FilePath: /vite-boot/src/store/modules/user.ts
  * @Description: 用户存储相关仓库
  */
@@ -22,6 +22,8 @@ const useUserStore = defineStore('User', {
 		return {
 			token: localStorage.getItem('token'), // 用户唯一标识token
 			menuRoutes: constantRoute, // 仓库存储生成菜单需要的路由数组
+			username: '',
+			avatar: '',
 		};
 	},
 
@@ -44,6 +46,21 @@ const useUserStore = defineStore('User', {
 				// 登陆请求失败
 				return Promise.reject(new Error(res.data.token));
 			}
+		},
+
+		// 获取用户信息的方法 视频里是登陆只返回token 在通过接口携带token去获取用户信息
+		async getUserInfo() {
+			const res: any = await userInfo().reqUserInfo();
+			if (res.code === 200) {
+				this.username = res.data.checkUser.username as string; // 断言
+				this.avatar = res.data.checkUser.avatar as string;
+			}
+		},
+		userLogout() {
+			this.token = '';
+			this.username = '';
+			this.avatar = '';
+			localStorage.removeItem('token');
 		},
 	},
 });

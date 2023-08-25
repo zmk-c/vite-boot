@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 16:55:36
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 15:57:14
+ * @LastEditTime: 2023-08-25 17:36:15
  * @FilePath: /vite-boot/src/layout/tabbar/index.vue
  * @Description: 顶部tabbar组件
 -->
@@ -33,18 +33,19 @@
 		<div class="tabbar_right">
 			<!-- 顶部右侧侧静态 -->
 			<el-button type="default" size="small" icon="Refresh" circle @click="updateRefresh"></el-button>
-			<el-button type="default" size="small" icon="FullScreen" circle></el-button>
+			<el-button type="default" size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
 			<el-button type="default" size="small" icon="Setting" circle></el-button>
 			<!-- 头像 -->
-			<img src="../../assets/images/avater.png" style="height: 29px; width: 29px; margin: 0px 10px" />
+			<!-- <img src="../../assets/images/avater.png" style="height: 29px; width: 29px; margin: 0px 10px" /> -->
+			<img :src="userStore.avater" style="height: 29px; width: 29px; margin: 0px 10px; border-radius: 50%" />
 			<!-- 下拉菜单 -->
 			<el-dropdown>
 				<span class="el-dropdown-link">
-					admin<el-icon class="el-icon--right"><arrow-down /></el-icon>
+					{{ userStore.username }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
 				</span>
 				<template #dropdown>
 					<el-dropdown-menu>
-						<el-dropdown-item>退出登陆</el-dropdown-item>
+						<el-dropdown-item @click="logout">退出登陆</el-dropdown-item>
 					</el-dropdown-menu>
 				</template>
 			</el-dropdown>
@@ -66,10 +67,16 @@ export default {
 // const changeIcon = () => {
 // 	fold.value = !fold.value;
 // };
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import useLayOutSettingStore from '@/store/modules/setting';
+import useUserStore from '@/store/modules/user';
+import { userInfo } from '@/api/user';
 let layOutSettingStore = useLayOutSettingStore();
+let userStore = useUserStore();
+// 获取路由对象
 let $route = useRoute();
+// 获取路由器对象
+let $router = useRouter();
 
 // 折叠按钮点击回调
 const changeIcon = () => {
@@ -80,6 +87,32 @@ const changeIcon = () => {
 const updateRefresh = () => {
 	layOutSettingStore.refresh = !layOutSettingStore.refresh;
 };
+
+// 全屏按钮的点击回调
+const fullScreen = () => {
+	// dom对象的一个属性document.fullscreenElement 可以用来判断当前项目是不是全屏Boolean
+	let full = document.fullscreenElement;
+	// 切换为全屏
+	if (!full) {
+		document.documentElement.requestFullscreen();
+	} else {
+		// 再点击 退出全屏
+		document.exitFullscreen();
+	}
+};
+
+// 退出登陆点击回调
+const logout = () => {
+	// 首先请求退出接口 其次将仓库中关于用户相关的数据清空 最后再跳转登录页面
+	userInfo()
+		.loginOut()
+		.then((res: any) => {
+			if (res.code === 200) {
+				userStore.userLogout();
+				$router.push({ path: '/login', query: { redirect: $route.path } }); // 退出再登录的时候 回到原来的页面
+			}
+		});
+};
 </script>
 
 <style scoped lang="scss">
@@ -89,7 +122,7 @@ const updateRefresh = () => {
 	display: flex;
 	justify-content: space-between;
 	// 加个渐变色
-	background-image: linear-gradient(to right, white, black, white);
+	// background-image: linear-gradient(to right, white, black, white);
 
 	.tabbar_left {
 		display: flex;

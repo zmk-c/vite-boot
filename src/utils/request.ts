@@ -2,13 +2,15 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-15 18:20:28
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 18:33:38
+ * @LastEditTime: 2023-08-25 16:57:58
  * @FilePath: /vite-boot/src/utils/request.ts
  * @Description: axios二次封装
  */
 // 进行axios二次封装：使用请求与响应拦截器
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
+// 引入用户相关仓库
+import useUserStore from '@/store/modules/user';
 
 // 第一步：利用axios对象的create方法，去创建axios实例
 const request = axios.create({
@@ -21,7 +23,11 @@ const request = axios.create({
 // 添加请求拦截器
 request.interceptors.request.use(
 	(config) => {
-		// config配置对象，headers属性请求头，经常给服务器携带公共参数
+		const userStore = useUserStore();
+		if (userStore.token) {
+			// config配置对象，headers属性请求头，经常给服务器携带公共参数
+			config.headers.token = userStore.token;
+		}
 		return config;
 	},
 	(error) => {
