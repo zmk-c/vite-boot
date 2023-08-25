@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 16:55:36
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 11:00:48
+ * @LastEditTime: 2023-08-25 15:57:14
  * @FilePath: /vite-boot/src/layout/tabbar/index.vue
  * @Description: 顶部tabbar组件
 -->
@@ -17,14 +17,22 @@
 			</el-icon>
 			<!-- 左侧面包屑 -->
 			<el-breadcrumb separator-icon="ArrowRight">
-				<el-breadcrumb-item :to="{ path: '/' }">权限管理</el-breadcrumb-item>
-				<el-breadcrumb-item>用户管理</el-breadcrumb-item>
+				<!-- <el-breadcrumb-item :to="{ path: '/' }">权限管理</el-breadcrumb-item>
+				<el-breadcrumb-item>用户管理</el-breadcrumb-item> -->
+
+				<!-- 现在动态的展示路由的名字 -->
+				<el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" v-show="item.meta.title" :to="item.path">
+					<!-- <el-icon>
+						<component :is="item.meta.icon"></component>
+					</el-icon> -->
+					<span>{{ item.meta.title }}</span>
+				</el-breadcrumb-item>
 			</el-breadcrumb>
 		</div>
 
 		<div class="tabbar_right">
 			<!-- 顶部右侧侧静态 -->
-			<el-button type="default" size="small" icon="Refresh" circle></el-button>
+			<el-button type="default" size="small" icon="Refresh" circle @click="updateRefresh"></el-button>
 			<el-button type="default" size="small" icon="FullScreen" circle></el-button>
 			<el-button type="default" size="small" icon="Setting" circle></el-button>
 			<!-- 头像 -->
@@ -58,12 +66,19 @@ export default {
 // const changeIcon = () => {
 // 	fold.value = !fold.value;
 // };
-
+import { useRoute } from 'vue-router';
 import useLayOutSettingStore from '@/store/modules/setting';
 let layOutSettingStore = useLayOutSettingStore();
+let $route = useRoute();
 
+// 折叠按钮点击回调
 const changeIcon = () => {
 	layOutSettingStore.fold = !layOutSettingStore.fold;
+};
+
+// 刷新按钮点击回调
+const updateRefresh = () => {
+	layOutSettingStore.refresh = !layOutSettingStore.refresh;
 };
 </script>
 

@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 18:54:21
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 15:40:47
+ * @LastEditTime: 2023-08-25 15:37:30
  * @FilePath: /vite-boot/src/router/router.ts
  * @Description: 常量路由
  */
@@ -21,7 +21,7 @@ export const constantRoute = [
 		component: () => import('@/layout/index.vue'),
 		name: 'Layout',
 		meta: {
-			title: 'layout',
+			title: '',
 			hidden: false,
 			icon: '',
 		},

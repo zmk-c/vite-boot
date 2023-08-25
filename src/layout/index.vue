@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 09:11:06
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 11:44:46
+ * @LastEditTime: 2023-08-25 16:08:37
  * @FilePath: /vite-boot/src/layout/index.vue
  * @Description: layout首页
 -->
@@ -33,7 +33,7 @@
 			<!-- 可以添加过渡动效 -->
 			<router-view v-slot="{ Component }">
 				<transition name="fade">
-					<component :is="Component" />
+					<component :is="Component" v-if="flag" />
 				</transition>
 			</router-view>
 		</div>
@@ -47,6 +47,7 @@ export default {
 </script>
 
 <script setup lang="ts">
+import { watch, ref, nextTick } from 'vue';
 // 获取路由对象
 import { useRoute } from 'vue-router';
 // 引入左侧菜单logo字组件
@@ -63,6 +64,20 @@ import useLayOutSettingStore from '@/store/modules/setting';
 let userStore = useUserStore();
 let $route = useRoute();
 let layOutSettingStore = useLayOutSettingStore();
+
+let flag = ref(true); // 是否展示内容展示区组件
+// 内容展示区监听刷新按钮的变化
+watch(
+	() => layOutSettingStore.refresh,
+	() => {
+		// 点击刷新按钮：路由组件销毁
+		flag.value = false;
+		// 接着在重新渲染组件
+		nextTick(() => {
+			flag.value = true;
+		});
+	}
+);
 </script>
 
 <style scoped lang="scss">
@@ -123,18 +138,18 @@ let layOutSettingStore = useLayOutSettingStore();
 		}
 
 		// 过渡动画
-		// .fade-enter-from {
-		// 	opacity: 0;
-		// 	transform: scale(0);
-		// }
-		// .fade-enter-active {
-		// 	transition: all 0.3s;
-		// }
+		.fade-enter-from {
+			opacity: 0;
+			transform: scale(0);
+		}
+		.fade-enter-active {
+			transition: all 0.3s;
+		}
 
-		// .fade-enter-to {
-		// 	opacity: 1;
-		// 	transform: scale(1);
-		// }
+		.fade-enter-to {
+			opacity: 1;
+			transform: scale(1);
+		}
 	}
 }
 </style>
