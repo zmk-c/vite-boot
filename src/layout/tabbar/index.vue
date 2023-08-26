@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 16:55:36
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 17:36:15
+ * @LastEditTime: 2023-08-26 23:52:11
  * @FilePath: /vite-boot/src/layout/tabbar/index.vue
  * @Description: 顶部tabbar组件
 -->
@@ -70,7 +70,6 @@ export default {
 import { useRoute, useRouter } from 'vue-router';
 import useLayOutSettingStore from '@/store/modules/setting';
 import useUserStore from '@/store/modules/user';
-import { userInfo } from '@/api/user';
 let layOutSettingStore = useLayOutSettingStore();
 let userStore = useUserStore();
 // 获取路由对象
@@ -90,7 +89,7 @@ const updateRefresh = () => {
 
 // 全屏按钮的点击回调
 const fullScreen = () => {
-	// dom对象的一个属性document.fullscreenElement 可以用来判断当前项目是不是全屏Boolean
+	// 可以用来判断当前项目是不是全屏Boolean
 	let full = document.fullscreenElement;
 	// 切换为全屏
 	if (!full) {
@@ -102,16 +101,10 @@ const fullScreen = () => {
 };
 
 // 退出登陆点击回调
-const logout = () => {
+const logout = async () => {
 	// 首先请求退出接口 其次将仓库中关于用户相关的数据清空 最后再跳转登录页面
-	userInfo()
-		.loginOut()
-		.then((res: any) => {
-			if (res.code === 200) {
-				userStore.userLogout();
-				$router.push({ path: '/login', query: { redirect: $route.path } }); // 退出再登录的时候 回到原来的页面
-			}
-		});
+	await userStore.userLogout();
+	$router.push({ path: '/login', query: { redirect: $route.path } }); // 退出再登录的时候 回到原来的页面
 };
 </script>
 
@@ -122,7 +115,7 @@ const logout = () => {
 	display: flex;
 	justify-content: space-between;
 	// 加个渐变色
-	// background-image: linear-gradient(to right, white, black, white);
+	background-image: linear-gradient(to right, white, black, white);
 
 	.tabbar_left {
 		display: flex;

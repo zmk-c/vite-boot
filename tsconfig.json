@@ -2,6 +2,7 @@
 	"compilerOptions": {
 		"target": "esnext", // 指定编译js的版本
 		"useDefineForClassFields": true, // 使用类字段定义
+    "allowSyntheticDefaultImports": true, // 允许对不包含默认导出的模块使用默认导入
 		"module": "esnext", // 生成代码的模板标准 默认为commonJs
 		"moduleResolution": "node",
 		"lib": [

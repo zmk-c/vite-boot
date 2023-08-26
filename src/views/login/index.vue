@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 09:20:09
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 17:37:06
+ * @LastEditTime: 2023-08-26 23:34:02
  * @FilePath: /vite-boot/src/views/login/index.vue
  * @Description: 登陆页面
 -->
@@ -46,7 +46,7 @@ const state = reactive({
 	loading: false, // 按钮加载效果
 	userForm: {
 		username: 'admin',
-		password: 'admin123',
+		password: 'atguigu123',
 	} as LoginFormData,
 
 	// 表单校验

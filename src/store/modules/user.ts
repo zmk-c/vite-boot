@@ -2,14 +2,14 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 11:29:10
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 17:20:18
+ * @LastEditTime: 2023-08-27 00:06:42
  * @FilePath: /vite-boot/src/store/modules/user.ts
  * @Description: 用户存储相关仓库
  */
 import { defineStore } from 'pinia';
 import { userInfo } from '@/api/user';
 // 登陆接口请求和返回数据
-import { LoginFormData, LoginResponseData } from '@/api/user/type';
+import { LoginFormData, LoginResponseData, UserInfoResponseData } from '@/api/user/type';
 // 用户仓库数据类型
 import { UserState } from './types/type';
 // 引入路由(常量)
@@ -33,34 +33,44 @@ const useUserStore = defineStore('User', {
 		async userLogin(userForm: LoginFormData) {
 			const res: LoginResponseData = await userInfo().login(userForm);
 			// 登陆请求成功 获取token
-			console.log(res);
 			if (res.code == 200) {
 				// pinia仓库存储token
 				// 由于pinia存储数据其实是利用js对象
-				this.token = res.data.token as string; // 断言
+				this.token = res.data as string; // 断言
 				// 最好本地存储持久化一份
-				localStorage.setItem('token', res.data.token as string);
+				localStorage.setItem('token', res.data as string);
 				// 能保证当前async函数返回一个成功的promise
 				return 'ok';
 			} else {
 				// 登陆请求失败
-				return Promise.reject(new Error(res.data.token));
+				return Promise.reject(new Error(res.data));
 			}
 		},
 
 		// 获取用户信息的方法 视频里是登陆只返回token 在通过接口携带token去获取用户信息
 		async getUserInfo() {
-			const res: any = await userInfo().reqUserInfo();
+			const res: UserInfoResponseData = await userInfo().reqUserInfo();
 			if (res.code === 200) {
-				this.username = res.data.checkUser.username as string; // 断言
-				this.avatar = res.data.checkUser.avatar as string;
+				this.username = res.data.name as string; // 断言
+				this.avatar = res.data.avatar as string;
+				return 'ok'; // 这里与permisstion.ts对应上
+			} else {
+				return Promise.reject(res.message);
 			}
 		},
-		userLogout() {
-			this.token = '';
-			this.username = '';
-			this.avatar = '';
-			localStorage.removeItem('token');
+
+		// 退出登录
+		async userLogout() {
+			const res: any = await userInfo().loginOut();
+			if (res.code === 200) {
+				this.token = '';
+				this.username = '';
+				this.avatar = '';
+				localStorage.removeItem('token');
+				return 'ok';
+			} else {
+				return Promise.reject(res.message);
+			}
 		},
 	},
 });

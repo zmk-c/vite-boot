@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 09:11:06
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 17:10:56
+ * @LastEditTime: 2023-08-26 01:06:37
  * @FilePath: /vite-boot/src/layout/index.vue
  * @Description: layout首页
 -->
@@ -124,7 +124,7 @@ watch(
 		position: absolute;
 		width: calc(100% - $base-menu-width);
 		height: calc(100vh - $base-tabbar-height);
-		// background: pink;
+		background: pink;
 		left: $base-menu-width;
 		top: $base-tabbar-height;
 		padding: 20px;
