@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 09:28:59
+ * @LastEditTime: 2023-08-28 09:36:16
  * @FilePath: /vite-boot/src/main.ts
  * @Description: main.ts函数主入口
  */
@@ -24,7 +24,8 @@ import '@/styles/index.scss';
 import router from './router';
 // 注册使用pinia
 import pinia from './store';
-
+// 导入路由守卫
+import './permission';
 // 获取应用实例对象
 const app = createApp(App);
 

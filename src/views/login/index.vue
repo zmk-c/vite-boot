@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 09:20:09
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-26 23:34:02
+ * @LastEditTime: 2023-08-28 09:35:50
  * @FilePath: /vite-boot/src/views/login/index.vue
  * @Description: 登陆页面
 -->
@@ -70,8 +70,9 @@ const login = async () => {
 		// $router.push('/');
 
 		// 判断登录的时候 路由路径中是否有query参数 如果有就往query参数跳转，没有跳转到首页 tabbar/index.vue
-		let redirect: any = $route.query.redirect;
-		$router.push({ path: redirect || '/login' });
+		let redirect: string = $route.query.redirect as string;
+		$router.push({ path: redirect || '/' });
+
 		// 登陆成功提示信息
 		ElNotification({
 			type: 'success',

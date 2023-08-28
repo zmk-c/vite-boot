@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 11:29:10
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-27 00:06:42
+ * @LastEditTime: 2023-08-28 09:10:45
  * @FilePath: /vite-boot/src/store/modules/user.ts
  * @Description: 用户存储相关仓库
  */
@@ -31,7 +31,7 @@ const useUserStore = defineStore('User', {
 	actions: {
 		// 用户登陆的方法
 		async userLogin(userForm: LoginFormData) {
-			const res: LoginResponseData = await userInfo().login(userForm);
+			const res: LoginResponseData = await userInfo().reqLogin(userForm);
 			// 登陆请求成功 获取token
 			if (res.code == 200) {
 				// pinia仓库存储token
@@ -48,8 +48,9 @@ const useUserStore = defineStore('User', {
 		},
 
 		// 获取用户信息的方法 视频里是登陆只返回token 在通过接口携带token去获取用户信息
-		async getUserInfo() {
+		async userInfo() {
 			const res: UserInfoResponseData = await userInfo().reqUserInfo();
+			console.log('getUserInfo ------', res);
 			if (res.code === 200) {
 				this.username = res.data.name as string; // 断言
 				this.avatar = res.data.avatar as string;
@@ -61,7 +62,7 @@ const useUserStore = defineStore('User', {
 
 		// 退出登录
 		async userLogout() {
-			const res: any = await userInfo().loginOut();
+			const res: any = await userInfo().reqLoginOut();
 			if (res.code === 200) {
 				this.token = '';
 				this.username = '';
