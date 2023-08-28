@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 16:55:36
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-26 23:52:11
+ * @LastEditTime: 2023-08-28 10:06:30
  * @FilePath: /vite-boot/src/layout/tabbar/index.vue
  * @Description: 顶部tabbar组件
 -->
@@ -37,7 +37,7 @@
 			<el-button type="default" size="small" icon="Setting" circle></el-button>
 			<!-- 头像 -->
 			<!-- <img src="../../assets/images/avater.png" style="height: 29px; width: 29px; margin: 0px 10px" /> -->
-			<img :src="userStore.avater" style="height: 29px; width: 29px; margin: 0px 10px; border-radius: 50%" />
+			<img :src="userStore.avatar" style="height: 29px; width: 29px; margin: 0px 10px; border-radius: 50%" />
 			<!-- 下拉菜单 -->
 			<el-dropdown>
 				<span class="el-dropdown-link">
