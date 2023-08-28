@@ -2,17 +2,18 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-15 10:39:30
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-18 15:38:20
+ * @LastEditTime: 2023-08-28 14:42:35
  * @FilePath: /vite-boot/src/components/index.ts
  * @Description: 自定义插件对象 全局组件
  */
 // 引入项目中全部的全局组件
 import SvgIcon from './SvgIcon/index.vue';
 import Pagniation from './Pagination/index.vue';
+import ETable from './ETable/index.vue';
 // 引入element-plus提供全部图标组件
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 // 全局对象
-const allGlobalComponent: any = { SvgIcon, Pagniation };
+const allGlobalComponent: any = { SvgIcon, Pagniation, ETable };
 
 // 对外暴露插件对象
 export default {
@@ -24,6 +25,7 @@ export default {
 			// 注册为全局组件
 			app.component(key, allGlobalComponent[key]);
 		});
+
 		// 将element-plus提供图标注册为全局组件
 		// 这样	<component :is="item.meta.icon"></component>中的icon图标就可以直接使用了
 		for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
