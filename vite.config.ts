@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-26 23:23:00
+ * @LastEditTime: 2023-08-28 09:30:39
  * @FilePath: /vite-boot/vite.config.ts
  * @Description: vite配置
  */
@@ -43,6 +43,8 @@ export default defineConfig(({ mode }) => {
 		},
 		// 代理跨域
 		server: {
+			port: Number(env.VITE_APP_PORT),
+			open: true, // 运行自动打开浏览器
 			proxy: {
 				[env.VITE_APP_BASE_API]: {
 					target: 'http://sph-api.atguigu.cn',
