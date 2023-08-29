@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-28 20:09:33
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 20:48:14
+ * @LastEditTime: 2023-08-29 13:52:12
  * @FilePath: /vite-boot/src/views/acl/user/components/AdUduser.vue
  * @Description: 新增/修改用户
 -->
@@ -102,7 +102,7 @@ const submit = async () => {
 					window.location.reload();
 					emit('update:drawerShow', false);
 				} else {
-					ElMessage.error(res.message);
+					ElMessage.error(res.data);
 				}
 			});
 	} else {

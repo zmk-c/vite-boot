@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 15:14:46
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-29 00:32:44
+ * @LastEditTime: 2023-08-29 13:45:54
  * @FilePath: /vite-boot/src/views/acl/user/index.vue
  * @Description: 权限管理-用户管理
 -->
@@ -23,8 +23,8 @@
 
 		<!-- 表单操作 -->
 		<el-card style="margin: 10px 0px">
-			<el-button type="primary" size="default" @click="addUser">添加用户</el-button>
-			<el-button type="danger" size="default" :disabled="selectdatas.length ? false : true" @click="deleteBatch">批量删除</el-button>
+			<el-button type="primary" size="default" icon="Plus" @click="addUser">添加用户</el-button>
+			<el-button type="danger" size="default" icon="Delete" :disabled="selectdatas.length ? false : true" @click="deleteBatch">批量删除</el-button>
 			<!-- table展示用户信息 采用Table封装的组件-->
 			<div style="margin: 10px 0px">
 				<ETable :showSelection="true" :columns="columns" :tableData="tableData" @handleSelectionChange="handleSelectionChange">
