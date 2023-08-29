@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-28 20:59:20
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 23:36:41
+ * @LastEditTime: 2023-08-29 14:02:42
  * @FilePath: /vite-boot/src/views/acl/user/components/SetRole.vue
  * @Description: 分配角色组件
 -->
@@ -41,8 +41,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { userAcl } from '@/api/acl/index';
-import { AllRolesResponseData, ReqSetRoleData } from '@/api/acl/type';
+import { userAcl } from '@/api/acl/user/index';
+import { AllRolesResponseData, ReqSetRoleData } from '@/api/acl/user/type';
 import { ElMessage, ElForm } from 'element-plus';
 
 // 从父组件传来的数据

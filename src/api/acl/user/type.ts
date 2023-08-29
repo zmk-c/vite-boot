@@ -2,17 +2,16 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-28 15:23:57
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-29 00:28:21
- * @FilePath: /vite-boot/src/api/acl/type.ts
+ * @LastEditTime: 2023-08-29 13:59:14
+ * @FilePath: /vite-boot/src/api/acl/user/type.ts
  * @Description: 权限管理相关类型约束
  */
-// 登录表单类型声明
+// 用户列表请求
 export interface UserFormData {
 	page: number;
 	limit: number;
 	username?: string;
 }
-
 // 登录接口返回数据类型
 // 定义全部接口返回数据都拥有的ts类型
 

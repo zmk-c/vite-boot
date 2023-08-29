@@ -2,14 +2,14 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 17:57:42
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 11:40:21
+ * @LastEditTime: 2023-08-29 14:05:04
  * @FilePath: /vite-boot/src/layout/logo/index.vue
  * @Description: 
 -->
 <template>
 	<div class="logo">
 		<img src="@/assets/images/logo.png" />
-		<p>甄选运营平台</p>
+		<p>VITE-BOOT</p>
 	</div>
 </template>
 

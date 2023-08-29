@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 15:14:46
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-29 13:45:54
+ * @LastEditTime: 2023-08-29 13:58:58
  * @FilePath: /vite-boot/src/views/acl/user/index.vue
  * @Description: 权限管理-用户管理
 -->
@@ -55,8 +55,8 @@
 
 <script setup lang="ts">
 import { reactive, toRefs, onMounted } from 'vue';
-import { User, UserFormData, UserResponseData } from '@/api/acl/type';
-import { userAcl } from '@/api/acl/index';
+import { User, UserFormData, UserResponseData } from '@/api/acl/user/type';
+import { userAcl } from '@/api/acl/user/index';
 // 引入新增/修改用户组件
 import AdUduser from './components/AdUduser.vue';
 import SetRole from './components/SetRole.vue';

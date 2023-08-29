@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-25 23:17:48
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 09:35:05
+ * @LastEditTime: 2023-08-29 14:05:51
  * @FilePath: /vite-boot/src/permission.ts
  * @Description: 做路由鉴权
  */
@@ -23,7 +23,7 @@ router.beforeEach(async (to, from, next) => {
 	// 用户未登录: 可以访问/login 其余路由不能访问
 	// 用户已登录: /login路由不在被访问 除非退出 此时在访问/login页面指向首页，其余的路由也可以访问
 	// 切换路由的时候title也更换
-	document.title = '硅谷甄选-' + to.meta.title;
+	document.title = 'ViteBOOT-' + to.meta.title;
 
 	nprogress.start(); // 进度条开始
 	const token = userStore.token;

@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-28 20:09:33
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-29 13:52:12
+ * @LastEditTime: 2023-08-29 14:02:13
  * @FilePath: /vite-boot/src/views/acl/user/components/AdUduser.vue
  * @Description: 新增/修改用户
 -->
@@ -40,8 +40,8 @@
 
 <script setup lang="ts">
 import { ref, reactive, toRefs, onMounted } from 'vue';
-import { User } from '@/api/acl/type';
-import { userAcl } from '@/api/acl/index';
+import { User } from '@/api/acl/user/type';
+import { userAcl } from '@/api/acl/user/index';
 import { ElMessage, ElForm } from 'element-plus';
 let userRef = ref(ElForm);
 

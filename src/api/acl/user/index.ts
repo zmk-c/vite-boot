@@ -2,8 +2,8 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 00:10:43
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-29 00:28:17
- * @FilePath: /vite-boot/src/api/acl/index.ts
+ * @LastEditTime: 2023-08-29 13:59:07
+ * @FilePath: /vite-boot/src/api/acl/user/index.ts
  * @Description: 权限管理相关的接口
  */
 import request from '@/utils/request';
