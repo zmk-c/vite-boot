@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-15 10:44:04
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 14:53:41
+ * @LastEditTime: 2023-08-28 16:13:55
  * @FilePath: /vite-boot/src/components/ETable/index.vue
  * @Description: 表格组件二次封装
 -->
@@ -15,7 +15,6 @@
 			:show-header="showHeader"
 			:data="tableData"
 			:span-method="objectSpanMethod"
-			:row-style="{ cursor: 'pointer' }"
 			:highlight-current-row="highlightCurrentRow"
 			@current-change="handleCurrentChange"
 			@selection-change="handleSelectionChange"
@@ -23,12 +22,8 @@
 		>
 			<!-- 序号及多选框 -->
 			<el-table-column v-if="showSelection" fixed="left" type="selection" width="40" :selectable="checkboxSelect"> </el-table-column>
-			<el-table-column v-if="showIndex" label="序号" align="center" type="index" width="70">
-				<template #default="{ $index }">
-					<span v-if="pageForm">{{ (pageForm.pageNum - 1) * pageForm.pageSize + $index + 1 }}</span>
-					<span v-else>{{ $index + 1 }}</span>
-				</template>
-			</el-table-column>
+			<el-table-column v-if="showIndex" label="序号" align="center" type="index" width="70"></el-table-column>
+
 			<!-- 表格数据 -->
 			<el-table-column
 				v-for="item in columns"
@@ -42,9 +37,9 @@
 				show-overflow-tooltip
 			>
 				<template #default="{ row, $index }">
-					<div v-if="!item.slot" :style="item.event === 'custom' ? row.style : ''" :class="item.active ? 'active' : ''">
+					<span v-if="!item.slot" :style="item.event === 'custom' ? row.style : ''" :class="item.active ? 'active' : ''">
 						{{ row[item.prop] }}
-					</div>
+					</span>
 					<slot :name="item.slot" :row="{ ...row, index: $index }"></slot>
 				</template>
 			</el-table-column>
@@ -90,10 +85,6 @@ const props = defineProps({
 	columns: {
 		type: Array as any,
 		default: () => [],
-	},
-	pageForm: {
-		type: Object,
-		default: null,
 	},
 	// 展示序号
 	showIndex: {
