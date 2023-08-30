@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-28 15:23:57
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-29 16:10:31
+ * @LastEditTime: 2023-08-29 19:39:56
  * @FilePath: /vite-boot/src/api/acl/permission/type.ts
  * @Description: 权限管理相关类型约束
  */
@@ -16,18 +16,18 @@ export interface ResponseData {
 
 // 菜单与按钮的ts类型
 export interface MenusData {
-	id: number;
+	id?: number;
 	createTime?: string;
 	updateTime?: string;
 	pid: number;
 	name: string;
 	code: string;
-	toCode: string;
-	type: number;
-	status: null;
+	toCode?: string;
+	type?: number;
+	status?: null;
 	level: number;
 	children?: MenusData[];
-	select: boolean;
+	select?: boolean;
 }
 
 // 定义获取角色信息返回的数据类型

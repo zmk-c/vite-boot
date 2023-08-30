@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-15 10:44:04
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 16:13:55
+ * @LastEditTime: 2023-08-29 17:00:35
  * @FilePath: /vite-boot/src/components/ETable/index.vue
  * @Description: 表格组件二次封装
 -->
@@ -11,6 +11,8 @@
 		<el-table
 			ref="tableRef"
 			:border="border"
+			:default-expand-all="defaultExpandAll"
+			:row-key="rowKey"
 			:stripe="stripe"
 			:show-header="showHeader"
 			:data="tableData"
@@ -61,15 +63,25 @@ const props = defineProps({
 		type: Boolean,
 		default: true,
 	},
+	// 是否展开表格
+	showHeader: {
+		type: Boolean,
+		default: true,
+	},
 	// 是否为斑马纹
 	stripe: {
 		type: Boolean,
 		default: true,
 	},
-	// 是否显示表头
-	showHeader: {
+	// 是否折叠
+	defaultExpandAll: {
 		type: Boolean,
-		default: true,
+		default: false,
+	},
+	// 折叠的key
+	rowKey: {
+		type: String,
+		default: 'id',
 	},
 	// 是否高亮但前行
 	highlightCurrentRow: {
