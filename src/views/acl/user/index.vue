@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 15:14:46
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-29 13:58:58
+ * @LastEditTime: 2023-08-31 01:52:06
  * @FilePath: /vite-boot/src/views/acl/user/index.vue
  * @Description: 权限管理-用户管理
 -->
@@ -33,7 +33,7 @@
 						<el-button type="primary" size="small" icon="Edit" @click="updateRow(scope.row)">编辑</el-button>
 						<el-popconfirm :title="`确定要删除${scope.row.username}吗`" width="200px" @confirm="deleteRow(scope.row.id)">
 							<template #reference>
-								<el-button type="danger" size="small" icon="Delete">删除</el-button>
+								<el-button type="danger" size="small" icon="Delete" v-has="`btn.User.remove`">删除</el-button>
 							</template>
 						</el-popconfirm>
 					</template>

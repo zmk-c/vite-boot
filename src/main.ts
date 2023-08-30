@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-30 15:51:35
+ * @LastEditTime: 2023-08-31 01:46:14
  * @FilePath: /vite-boot/src/main.ts
  * @Description: main.ts函数主入口
  */
@@ -28,9 +28,11 @@ import pinia from './store';
 import './permission';
 // 暗黑模式样式
 import 'element-plus/theme-chalk/dark/css-vars.css';
+// 引入自定义指令
+import { isHasButton } from './directive/has';
 // 获取应用实例对象
 const app = createApp(App);
-
+isHasButton(app);
 app
 	.use(ElementPlus, {
 		// 国际化

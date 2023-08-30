@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 11:29:10
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-31 01:03:08
+ * @LastEditTime: 2023-08-31 01:39:43
  * @FilePath: /vite-boot/src/store/modules/user.ts
  * @Description: 用户存储相关仓库
  */
@@ -23,6 +23,7 @@ const useUserStore = defineStore('User', {
 		return {
 			token: localStorage.getItem('token'), // 用户唯一标识token
 			menuRoutes: constantRoute, // 仓库存储生成菜单需要的路由数组
+			buttons: [], // 存储当前用户是否包含某一个按钮
 			username: '',
 			avatar: '',
 		};
@@ -65,6 +66,9 @@ const useUserStore = defineStore('User', {
 					router.addRoute(route);
 				});
 				console.log(router.getRoutes());
+
+				// 获取按钮权限
+				this.buttons = res.data.buttons;
 
 				return 'ok'; // 这里与permisstion.ts对应上
 			} else {
