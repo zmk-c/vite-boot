@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-18 16:55:36
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 10:06:30
+ * @LastEditTime: 2023-08-30 16:24:36
  * @FilePath: /vite-boot/src/layout/tabbar/index.vue
  * @Description: 顶部tabbar组件
 -->
@@ -34,7 +34,20 @@
 			<!-- 顶部右侧侧静态 -->
 			<el-button type="default" size="small" icon="Refresh" circle @click="updateRefresh"></el-button>
 			<el-button type="default" size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
-			<el-button type="default" size="small" icon="Setting" circle></el-button>
+			<!-- 这里不采用抽屉了 采用pop弹出框 -->
+			<el-popover placement="top-start" title="主题设置" :width="200" trigger="hover">
+				<el-form>
+					<el-form-item label="主题颜色">
+						<el-color-picker v-model="color" show-alpha :predefine="predefineColors" @change="setColor" />
+					</el-form-item>
+					<el-form-item label="暗黑模式">
+						<el-switch v-model="dark" inline-prompt active-icon="Moon" inactive-icon="Sunny" @change="changeDark" />
+					</el-form-item>
+				</el-form>
+				<template #reference>
+					<el-button type="default" size="small" icon="Setting" circle></el-button>
+				</template>
+			</el-popover>
 			<!-- 头像 -->
 			<!-- <img src="../../assets/images/avater.png" style="height: 29px; width: 29px; margin: 0px 10px" /> -->
 			<img :src="userStore.avatar" style="height: 29px; width: 29px; margin: 0px 10px; border-radius: 50%" />
@@ -67,6 +80,7 @@ export default {
 // const changeIcon = () => {
 // 	fold.value = !fold.value;
 // };
+import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import useLayOutSettingStore from '@/store/modules/setting';
 import useUserStore from '@/store/modules/user';
@@ -76,6 +90,39 @@ let userStore = useUserStore();
 let $route = useRoute();
 // 获取路由器对象
 let $router = useRouter();
+
+// 颜色相关
+const color = ref('rgba(255, 69, 0, 0.68)');
+const predefineColors = ref([
+	'#ff4500',
+	'#ff8c00',
+	'#ffd700',
+	'#90ee90',
+	'#00ced1',
+	'#1e90ff',
+	'#c71585',
+	'rgba(255, 69, 0, 0.68)',
+	'rgb(255, 120, 0)',
+	'hsv(51, 100, 98)',
+	'hsva(120, 40, 94, 0.5)',
+	'hsl(181, 100%, 37%)',
+	'hsla(209, 100%, 56%, 0.73)',
+	'#c7158577',
+]);
+const setColor = () => {
+	// 通知js修改根节点的样式对象的属性与属性值
+	let html = document.documentElement;
+	html.style.setProperty('--el-color-primary', color.value);
+	html.style.setProperty('--el-color-danger', color.value);
+};
+
+// 主题相关
+let dark = ref(false);
+const changeDark = () => {
+	// 获取html根标签 动态的增加dark class
+	let html = document.documentElement;
+	dark.value ? (html.className = 'dark') : (html.className = '');
+};
 
 // 折叠按钮点击回调
 const changeIcon = () => {
@@ -115,7 +162,7 @@ const logout = async () => {
 	display: flex;
 	justify-content: space-between;
 	// 加个渐变色
-	background-image: linear-gradient(to right, white, black, white);
+	// background-image: linear-gradient(to right, white, black, white);
 
 	.tabbar_left {
 		display: flex;

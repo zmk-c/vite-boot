@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 09:36:16
+ * @LastEditTime: 2023-08-30 15:51:35
  * @FilePath: /vite-boot/src/main.ts
  * @Description: main.ts函数主入口
  */
@@ -26,6 +26,8 @@ import router from './router';
 import pinia from './store';
 // 导入路由守卫
 import './permission';
+// 暗黑模式样式
+import 'element-plus/theme-chalk/dark/css-vars.css';
 // 获取应用实例对象
 const app = createApp(App);
 
