@@ -2,14 +2,14 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-10 15:48:12
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-16 11:19:10
+ * @LastEditTime: 2023-08-30 23:54:37
  * @FilePath: /vite-boot/README.md
  * @Description: README
 -->
 
 # Vue 3 + TypeScript + Vite
 
-这个模板可以帮助你开始在Vite中使用Vue 3和TypeScript进行开发。
+说明：这个模板可以帮助你开始在Vite中使用Vue 3和TypeScript进行开发。
 
 1. 使用eslint+prettier作为语法校验和格式化工具
 
@@ -29,8 +29,28 @@
 'build', // 打包
 ```
 
-3. 集成了element-plus和sass常用组件库，配置全局的样式
+3. 集成了element-plus和sass等常用组件库，配置全局的样式
 
-4. 对axios进行了二次封装，api接口统一管理
+4. 封装了表单、分页、svg图片组件全局组件，直接使用即可
 
-5. 使用vue-router 4.x作为路由配置以及pinia作为仓库
+5. 对axios进行了二次封装，api接口统一管理
+
+6. 使用vue-router 4.x作为路由配置以及pinia作为仓库
+
+下载
+
+```bash
+git clone https://github.com/zmk-c/vite-boot
+```
+
+安装依赖
+
+```bash
+npm install
+```
+
+运行
+
+```bash
+npm run dev
+```
