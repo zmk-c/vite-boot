@@ -2,10 +2,11 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-17 18:54:21
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-25 15:37:30
+ * @LastEditTime: 2023-08-31 01:00:09
  * @FilePath: /vite-boot/src/router/router.ts
- * @Description: 常量路由
+ * @Description: 常量路由 + 异步路由
  */
+// 常量路由
 export const constantRoute = [
 	{
 		path: '/login',
@@ -48,6 +49,19 @@ export const constantRoute = [
 			icon: 'Platform',
 		},
 	},
+	{
+		path: '/404',
+		component: () => import('@/views/404/index.vue'),
+		name: '404',
+		meta: {
+			title: '404',
+			hidden: true,
+		},
+	},
+];
+
+// 异步路由
+export const asyncRoute = [
 	{
 		path: '/acl',
 		component: () => import('@/layout/index.vue'),
@@ -144,22 +158,14 @@ export const constantRoute = [
 			},
 		],
 	},
-	{
-		path: '/404',
-		component: () => import('@/views/404/index.vue'),
-		name: '404',
-		meta: {
-			title: '404',
-			hidden: true,
-		},
-	},
-	{
-		path: '/:pathMatch(.*)*',
-		redirect: '/404',
-		name: 'Any',
-		meta: {
-			title: '任意路由',
-			hidden: true,
-		},
-	},
 ];
+// 任意路由
+export const anyRoute = {
+	path: '/:pathMatch(.*)*',
+	redirect: '/404',
+	name: 'Any',
+	meta: {
+		title: '任意路由',
+		hidden: true,
+	},
+};

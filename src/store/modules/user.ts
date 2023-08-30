@@ -2,7 +2,7 @@
  * @Author: zhangmaokai zmkfml@163.com
  * @Date: 2023-08-16 11:29:10
  * @LastEditors: zhangmaokai zmkfml@163.com
- * @LastEditTime: 2023-08-28 09:10:45
+ * @LastEditTime: 2023-08-31 01:03:08
  * @FilePath: /vite-boot/src/store/modules/user.ts
  * @Description: 用户存储相关仓库
  */
@@ -12,8 +12,9 @@ import { userInfo } from '@/api/user';
 import { LoginFormData, LoginResponseData, UserInfoResponseData } from '@/api/user/type';
 // 用户仓库数据类型
 import { UserState } from './types/type';
-// 引入路由(常量)
-import { constantRoute } from '@/router/router';
+// 引入路由(常量) 和异步路由 任意路由 通过后端返回的权限控制
+import { constantRoute, asyncRoute, anyRoute } from '@/router/router';
+import router from '@/router';
 
 // 创建用户相关仓库
 const useUserStore = defineStore('User', {
@@ -54,6 +55,17 @@ const useUserStore = defineStore('User', {
 			if (res.code === 200) {
 				this.username = res.data.name as string; // 断言
 				this.avatar = res.data.avatar as string;
+
+				// 获取res返回的routes字段 遍历对比路由 追加当前角色所具有的异步路由
+				const userAsyncRoute = filerAsyncRoute(asyncRoute, res.data.routes);
+				// 将常量路由、用户具有的异步路由和 任意路由合并 这里目前异步路由和任意路由只是页面 因为还没有注册
+				this.menuRoutes = [...constantRoute, ...userAsyncRoute, anyRoute];
+				// 动态的添加路由
+				[...userAsyncRoute, anyRoute].forEach((route: any) => {
+					router.addRoute(route);
+				});
+				console.log(router.getRoutes());
+
 				return 'ok'; // 这里与permisstion.ts对应上
 			} else {
 				return Promise.reject(res.message);
@@ -75,5 +87,19 @@ const useUserStore = defineStore('User', {
 		},
 	},
 });
+
+// 用于过滤当前用户需要展示的异步路由
+function filerAsyncRoute(asyncRoute: any, routes: any) {
+	return asyncRoute.filter((item: any) => {
+		if (routes.includes(item.name)) {
+			// 子路由也需要过滤
+			if (item.children && item.children.length > 0) {
+				item.children = filerAsyncRoute(item.children, routes);
+			}
+			return true;
+		}
+	});
+}
+
 // 对外暴露
 export default useUserStore;
